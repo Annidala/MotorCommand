@@ -50,7 +50,7 @@ ser.write(v_ang) # set the value of the displacement rate in the motor register
 control_mode=In(2).set_mode()
 ser.write(control_mode)
 
-#lancement essai : position a atteindre =vérin rentré
+#Test launch
 pfinale_=Conversion(80000).displacement_in_counts()
 pfinale=In(pfinale_).set_requiredposition()
 ser.write(pfinale)
@@ -73,9 +73,13 @@ while t<180:
   measureddistance.append(GetAnswer(position2).get_answer())
   measuredtime.append(t)
   time.sleep(dt)
-  
+
+
+#test stop
 stop= In(0).set_mode()
 ser.write(stop)
+
+#results
 print measureddistance
 print measuredtime
 ser.close()
